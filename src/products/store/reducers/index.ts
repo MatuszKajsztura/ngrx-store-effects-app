@@ -16,7 +16,7 @@ export const reducers: ActionReducerMap<ProductsState> = {
 // selectors
 export const getProductsState = createFeatureSelector<ProductsState>(
   "products"
-); // referencja do products w state (w products module for feature)
+); // referencja do pgetPizzaStateroducts w state (w products module for feature)
 
 // pizza state selectors
 export const getPizzaState = createSelector(
@@ -24,9 +24,16 @@ export const getPizzaState = createSelector(
   (state: ProductsState) => state.pizzas
 );
 
-export const getAllPizzas = createSelector(
+export const getPizzasEntities = createSelector(
   getPizzaState,
-  fromPizzasReducer.getPizzas
+  fromPizzasReducer.getPizzasEntities
+);
+
+export const getAllPizzas = createSelector(
+  getPizzasEntities,
+  (entities) => Object.keys(entities).map((id) => {
+    return entities[+id];
+  })
 );
 
 export const getAllPizzasLoaded = createSelector(
