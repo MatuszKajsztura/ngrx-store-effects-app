@@ -57,7 +57,7 @@ export function reducer(
   return state; // przy pierwszym zwrocie --> Initial State
 }
 
-
+// skróty dla selectorów
 export const getPizzasEntities = (state: PizzaState) => state.entities;
 export const getPizzasLoading = (state: PizzaState) => state.loading;
 export const getPizzasLoaded = (state: PizzaState) => state.loaded;
