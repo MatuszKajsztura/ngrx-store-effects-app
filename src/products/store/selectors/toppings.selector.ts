@@ -30,3 +30,8 @@ export const getToppingsLoading = createSelector(
     getToppingsState,
     fromToppingReducer.getToppingsLoading
 );
+
+export const getSelectedToppings = createSelector(
+    getToppingsState,
+    fromToppingReducer.getSelectedToppings
+);
