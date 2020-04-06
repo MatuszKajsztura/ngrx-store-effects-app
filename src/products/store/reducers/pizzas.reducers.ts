@@ -51,7 +51,19 @@ export function reducer(
         loading: false,
         loaded: false
       }
-    }
+    };
+    case fromPizzas.CREATE_PIZZA_SUCCESS:
+    case fromPizzas.UPDATE_PIZZA_SUCCESS: {
+      const pizza: Pizza = action.payload;
+      const entities = {
+        ...state.entities,
+        [pizza.id]: pizza
+      }
+      return {
+        ...state,
+        entities
+      }
+    };
   }
 
   return state; // przy pierwszym zwrocie --> Initial State
