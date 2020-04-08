@@ -66,9 +66,10 @@ export function reducer(
     };
     case fromPizzas.REMOVE_PIZZA_SUCCESS: {
       const pizza: Pizza = action.payload;
+      console.log('pizza do usuniecia', action)
       //destrukturyzacja w celu usunięcia:
       const { [pizza.id]: removed, ...entities} = state.entities;
-
+      console.log(entities)
       return {
         ...state,
         entities
