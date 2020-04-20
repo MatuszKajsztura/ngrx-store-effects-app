@@ -7,7 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { reducers, effects } from './store'
+// reducers
+import { reducers, effects } from './store';
+// guards
+import * as fromGuards from './guards';
 // components
 import * as fromComponents from './components';
 
@@ -21,16 +24,19 @@ import * as fromServices from './services';
 export const ROUTES: Routes = [
   {
     path: '',
+    canActivate: [fromGuards.PizzasGuard],
     component: fromContainers.ProductsComponent,
   },
   {
     path: 'new',
+    canActivate: [fromGuards.PizzasGuard, fromGuards.ToppingsGuard],
     component: fromContainers.ProductItemComponent,
   },
   {
     path: ':pizzaId',
+    canActivate: [fromGuards.PizzaExistGuard, fromGuards.ToppingsGuard],
     component: fromContainers.ProductItemComponent,
-  } 
+  }
 ];
 
 @NgModule({
@@ -42,7 +48,7 @@ export const ROUTES: Routes = [
     StoreModule.forFeature('products', reducers), // allow to lazy load with store, bind to route store object
     EffectsModule.forFeature(effects)
   ],
-  providers: [...fromServices.services],
+  providers: [...fromServices.services, ...fromGuards.guards],
   declarations: [...fromContainers.containers, ...fromComponents.components],
   exports: [...fromContainers.containers, ...fromComponents.components],
 })
