@@ -36,19 +36,18 @@ export function reducer(
         };
         /*
         [{}, {}, {}]
-        */        
+        */
         case fromToppings.LOAD_TOPPINGS_SUCCESS: {
             const entities = action.payload.reduce((entities: {[id: number]: Topping}, current) => {
                 const entity = {
-                    [current.id]: current 
+                    [current.id]: current
                 };
                 return {
-                    ...entities, ...entity 
+                    ...entities, ...entity
                 }
             },{
                 ...state.entities
             })
-            console.log(entities,222)
             return {
                 ...state,
                 entities,

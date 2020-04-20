@@ -34,7 +34,7 @@ export const ROUTES: Routes = [
   },
   {
     path: ':pizzaId',
-    canActivate: [fromGuards.PizzaExistGuard, fromGuards.ToppingsGuard],
+    canActivate: [fromGuards.ToppingsGuard, fromGuards.PizzaExistGuard],
     component: fromContainers.ProductItemComponent,
   }
 ];

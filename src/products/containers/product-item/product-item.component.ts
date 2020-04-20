@@ -16,7 +16,7 @@ import { tap } from 'rxjs/operators';
   selector: 'product-item',
   styleUrls: ['product-item.component.scss'],
   template: `
-    <div 
+    <div
       class="product-item">
       <pizza-form
         [pizza]="pizza$ | async"
@@ -31,6 +31,7 @@ import { tap } from 'rxjs/operators';
       </pizza-form>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductItemComponent implements OnInit {
   pizza: Pizza;

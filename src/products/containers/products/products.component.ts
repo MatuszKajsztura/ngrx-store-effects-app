@@ -23,7 +23,8 @@ import { Observable } from "rxjs/Observable";
         </pizza-item>
       </div>
     </div>
-  `
+  `,
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsComponent implements OnInit {
   pizzas$: Observable<Pizza[]>;

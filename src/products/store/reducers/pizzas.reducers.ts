@@ -17,7 +17,6 @@ export function reducer(
   state = initialState,
   action: fromPizzas.PizzasAction
 ): PizzaState {
-  console.log('reducer')
   switch(action.type){
     case fromPizzas.LOAD_PIZZAS: {
       return {
@@ -35,8 +34,6 @@ export function reducer(
       }, {
         ...state.entities
       })
-
-      console.log(entities)
 
       return {
         ...state,
@@ -66,10 +63,8 @@ export function reducer(
     };
     case fromPizzas.REMOVE_PIZZA_SUCCESS: {
       const pizza: Pizza = action.payload;
-      console.log('pizza do usuniecia', action)
       //destrukturyzacja w celu usunięcia:
       const { [pizza.id]: removed, ...entities} = state.entities;
-      console.log(entities)
       return {
         ...state,
         entities
